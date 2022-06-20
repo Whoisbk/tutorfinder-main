@@ -1,0 +1,83 @@
+{% extends 'base/main.html' %}
+{% block title %}<title>Home</title>{% endblock %}
+{% block content %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+{% endblock %}
+  
+<div class="sidebar">
+  <div class="sidebar-brand">
+    
+    <h1>Menu</h1>
+    
+  </div>
+  <div class="sidebar-menu ">
+    <div class="bx bx-x" id="exit-icon"></div>
+            <a href="{% url 'home' %}"><i class='bx bxs-user-detail'></i><span>Tutors</span></a>
+        
+            <a href="{% url 'Profile' %}"><i class='bx bx-user'></i><span>My Profile</span></a>
+        
+            <a href="{% url 'help' %}"><i class='bx bx-help-circle'></i><span>Help</span></a>
+       
+          <a href="{% url 'signout' %}"><i class='bx bx-log-out'></i><span>Log Out</span></a>
+  </div>
+</div>
+
+<div class="main-content">
+  <header>
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <h1>
+      My TuTor<span>Finder</span>
+    </h1>
+    <div class="user-wrapper">
+        <div>
+        <h4><a href=" {% url 'Profile' %}">{{user.first_name|title}} {{user.last_name|title}}</a>
+        </h4>
+        {% if user.is_Student %}
+          <small>Student</small>
+        {% else %}
+        <small>Tutor</small>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+  <div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form action = "#" method="GET">
+                {{tutFilter.form.as_p}}
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+  </div>
+  <h3 class="tutor-counter"> {{tutcounter}} Tutor/Tutors Available</h3> 
+  
+  {% for tutor in tutDet %}
+  <div class="container">    
+    <div class="tutor-ad">
+        <div class="tutor-ad_img">
+          <a href="{% url 'Profile' %}"><img src="{{tutor.img.url }}" width="50px" height="50px" alt=""></a> 
+        </div>
+        <div class="tutor-ad_info">
+            <div class="tutor-ad_data">
+              <span>{{tutor.subject|title}} Tutor</span>
+              <span>Located in {{tutor.location|title}}</span>
+        
+            </div>
+            <h1 class="tutor-ad_title">
+              <a href="{% url 'tutorProfile' tutor.user_id %}">{{tutor.user.first_name}} {{tutor.user.last_name}}</a>
+            </h1>
+            <p>
+              {{tutor.serv_desc}}
+            </p>
+            <a href="{% url 'tutorProfile' tutor.user_id %}" class="tutor-ad_profile">View Profile</a>
+            <a href="{% url 'send_email' %}" class="tutor-ad_profile">Request Tutor</a>
+        </div>
+    </div>
+  </div>
+  {% endfor %}
+  
+</div>
+{% endblock %}

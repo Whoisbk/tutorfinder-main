@@ -1,0 +1,193 @@
+{% extends 'base/main.html' %}
+{% block title %}<title>Home</title>{% endblock %}
+{% block content %}
+{% load static %}
+{% load my_extras %}
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+{% endblock %}
+
+<div class="sidebar">
+  <div class="sidebar-brand">
+    
+    <h1>Menu</h1>
+    
+  </div>
+  <div class="sidebar-menu ">
+    <div class="bx bx-x" id="exit-icon"></div>
+    <a href="{% url 'home' %}"><i class='bx bxs-home'></i><span>Tutors</span></a>
+          
+    <a href="{% url 'Profile' %}"><i class='bx bx-user'></i><span>My Profile</span></a>
+
+    <a href="{% url 'help' %}"><i class='bx bx-help-circle'></i><span>Help</span></a>
+    <a href="{% url 'how_it_works' %}"><i class='bx bx-info-circle'></i><span>How It works</span></a>
+  
+  <a href="{% url 'display_subjects' %}"><i class='bx bx-book-open'></i><span>Available Subjects</span></a>
+  <a href="{% url 'signout' %}"><i class='bx bx-log-out'></i><span>Log Out</span></a>
+</div>
+</div>
+
+<div class="main-content">
+  <header>
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <h1>
+      My TuTor<span>Finder</span>
+    </h1>
+    <div class="user-wrapper">
+    
+<div class="dropdown">
+  <a class="btn btn-primary dropdown-toggle mx-3" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="{% url 'signout' %}">Logout</a></li>
+  </ul>
+</div>
+        <div>
+        <h4><a href=" {% url 'Profile' %}">{{user.first_name|title}} {{user.last_name|title}}</a>
+        </h4>
+        {% if user.is_Student %}
+          <small>Student</small>
+        {% else %}
+        <small>Tutor</small>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form action = "#" method="GET">
+            {{tutFilter.form.as_p}}
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+  </div>
+  <h3 class="tutor-counter"> {{tutcounter}} Tutor/Tutors Available</h3> 
+
+<!--Pagination-->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    
+  {% if tutor_list.has_previous %}
+    <li class="page-item"> <a class="page-link" href="{% my_url 1 'page' request.GET.urlencode %}">&laquo</a></li>
+    <li class="page-item"><a class="page-link" href="{% my_url tutor_list.previous_page_number 'page' request.GET.urlencode %}">Previous</a></li>
+  {% endif %}
+
+  <li class="page-item disabled" ><a href="#" class="page-link" >Page {{tutor_list.number}} of {{tutor_list.paginator.num_pages}}</a></li>
+
+  {% if tutor_list.has_next %}
+  <li class="page-item"> <a class="page-link" href="{% my_url tutor_list.next_page_number 'page' request.GET.urlencode %}">Next</a></li>
+    <li class="page-item"><a class="page-link" href="{% my_url tutor_list.paginator.num_pages 'page' request.GET.urlencode %}"> &raquo</a></li>
+  {% endif %}
+</ul>
+</nav>
+
+  {% for tutor in tutor_list %}
+  <div class="container">    
+    <div class="tutor-ad">
+        <div class="tutor-ad_img">
+          {% if tutor.img %}
+            <a href="{% url 'Profile' %}"><img src="{{tutor.img.url }}" width="30px" height="30px" alt=""></a> 
+          {% else%}
+            <a href="{% url 'Profile' %}"><img src="{% static 'images/default.png' %}" width="30px" height="30px" alt=""></a> 
+          {% endif %}
+        </div>
+        <div class="tutor-ad_info">
+          <h1 class="tutor-ad_title">
+            <a href="{% url 'tutorProfile' tutor.user_id %}">{{tutor.user.first_name|title}} {{tutor.user.last_name|title}}</a>
+          </h1>
+            <div class="tutor-ad_data">
+              <span>{{tutor.subject|title}} Tutor</span>
+              <span class="location">Located in {{tutor.location|title}}</span>
+        <p class="serv-desc">
+              {{tutor.serv_desc}}
+            </p>
+            </div>
+           
+            
+            <p class="price">Price: R{{tutor.fee_field}}</p>
+            <a href="{% url 'tutorProfile' tutor.user_id %}" class="tutor-ad_profile">View Profile</a>
+            <a href="{% url 'subject_choice_stud' %}" class="tutor-ad_profile">Request Tutor</a>
+        </div>
+    </div>
+  </div>
+  {% endfor %}
+  <!--Pagination -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    
+  
+
+  {% if tutor_list.has_previous %}
+    <li class="page-item"> <a class="page-link" href="{% my_url 1 'page' request.GET.urlencode %}">&laquo </a></li>
+    <li class="page-item"><a class="page-link" href="{% my_url tutor_list.previous_page_number 'page' request.GET.urlencode %}">Previous</a></li>
+  {% endif %}
+
+  <li class="page-item disabled" ><a href="#" class="page-link" >Page {{tutor_list.number}} of {{tutor_list.paginator.num_pages}}</a></li>
+
+  {% if tutor_list.has_next %}
+  <li class="page-item"> <a class="page-link" href="{% my_url tutor_list.next_page_number 'page' request.GET.urlencode %}">Next</a></li>
+    <li class="page-item"><a class="page-link" href="{% my_url tutor_list.paginator.num_pages 'page' request.GET.urlencode %}"> &raquo</a></li>
+  {% endif %}
+</ul>
+</nav>
+<div class="bg-primary text-white pt-5 pb-4">
+  <div class="container text-center text-md-left">
+
+      <div class="row text-center text-md-left">
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold">About Us</h5>
+          <p>A platform where students can come and have</p>
+
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold">Contact Us</h5>
+          <p>
+            <a href="#" class="text-white"><i class='bx bx-envelope'></i> tutorfinder-live</a>
+          </p>
+          <p>
+            <a href="#" class="text-white"><i class='bx bx-phone'></i> +27 66 225 1040</a>
+          </p>
+          
+        </div>
+
+
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold">Our Socials</h5>
+          <p>
+            <a href="#" class="text-white mr-3"><i class='bx bxl-meta'></i>  Facabook</a>
+          </p>
+          <p>
+            <a href="#" class="text-white"><i class='bx bxl-whatsapp mr-3'></i>  whatsapp</a>
+          </p>
+          <p>
+            <a href="#" class="text-white"><i class='bx bxl-linkedin-square mr-3'></i>  linkedin</a>
+          </p>
+      
+        </div>
+      </div>
+
+      
+
+    
+  </div>
+  <br class="mb-4">
+
+    <div class="row align-items-center">
+      <div class="col-md-7 col-lg-8">
+        <p>
+          Copyright &copy 2022 All rights reserved by:
+          <a href="#" style="text-decoration: none;"><strong class="text-warning">Mytutorfinder limited coperation</strong></a>
+        </p>
+      </div>
+
+    </div>
+</div>
+
+</div>
+
+
+{% endblock %}

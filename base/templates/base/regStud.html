@@ -1,0 +1,76 @@
+{% extends 'base/main.html' %}
+{% block title %}<title>Registration</title>{% endblock %}
+
+{% block content %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/registerStudent.css' %}">
+{% endblock %}
+
+<div class="login">
+  <h1>Sign Up</h1>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for message in messages %}
+    <p class="error">{{message}}</p>
+    {% endfor %}
+    
+    <div class="text_field">
+      {{form.fname}}
+      <span></span>
+      <label>First Name</label>
+    </div>
+    <div class="text_field">
+        {{form.lname}}
+        <span></span>
+        <label>Last Name</label>
+    </div>
+    <div class="text_field">
+        {{form.id_num}}
+        <span></span>
+        <label>ID Number</label>        
+    </div>
+    <div class="text_field">
+        {{form.username}}
+        <span></span>
+        <label>Username</label>
+    </div>
+    <div class="text_field">
+        {{form.email}}
+        <span></span>
+        <label>Email</label>
+    </div>
+    <div class="text_field">
+      {{form.phone}}
+      <span></span>
+      <label>phone</label>
+  </div>
+    <div class="text_field">
+        {{form.pass1}}
+        <span></span>
+        <label>Password (More than 6 Characters)</label>        
+    </div>
+    <div class="text_field">
+        {{form.pass2}}
+        <span></span>
+        <label>Confirm Password</label>        
+    </div>
+   <div class="text_field">
+        {{form.img_field}}
+        <span></span>
+        <label>Upload Profile Image (Optional)</label>        
+    </div>
+    <div class="text_field">
+        {{form.location}}
+        <span></span>
+        <label >Area</label>        
+    </div>
+   
+    <button type="submit">Create Account</button>
+    <div class="signup_link">
+      Im already a student<a href="{% url 'signin' %}"> Signin</a>
+  </div>
+  </form>
+</div>
+
+{% endblock %}

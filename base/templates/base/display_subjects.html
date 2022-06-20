@@ -1,0 +1,159 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+{% block title %}<title>Available Subjects</title>{% endblock %}
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/how_it_works.css' %}">
+{% block styles %}
+<link rel="stylesheet" href="">
+{% endblock %}
+<div class="sidebar">
+    <div class="sidebar-brand">
+      
+      <h1>Menu</h1>
+      
+    </div>
+    <div class="sidebar-menu ">
+      <div class="bx bx-x" id="exit-icon"></div>
+              <a href="{% url 'home' %}"><i class='bx bxs-home'></i><span>Tutors</span></a>
+          
+              <a href="{% url 'Profile' %}"><i class='bx bx-user'></i><span>My Profile</span></a>
+          
+              <a href="{% url 'help' %}"><i class='bx bx-help-circle'></i><span>Help</span></a>
+              <a href="{% url 'how_it_works' %}"><i class='bx bx-info-circle'></i><span>How It works</span></a>
+              <a href="{% url 'display_subjects' %}"><i class='bx bx-book-open'></i><span>Available Subjects</span></a>
+            <a href="{% url 'signout' %}"><i class='bx bx-log-out'></i><span>Log Out</span></a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <div class="bx bx-menu" id="menu-icon"></div>
+      <h1>
+        My TuTor<span>Finder</span>
+      </h1>
+      <div class="user-wrapper">
+          <div>
+          <h4><a href=" {% url 'Profile' %}">{{user.first_name|title}} {{user.last_name|title}}</a>
+          </h4>
+          {% if user.is_Student %}
+            <small>Student</small>
+          {% else %}
+          <small>Tutor</small>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+    
+    <div class="container">
+        <div class="subjects">
+            <h2>Available Subjects</h2>
+            <p>Accounting</p>
+            <P>Afrikaans First Additional Language </P>
+            <p>Algebra</p> 
+            <p>Anatomy</p>
+            <p>Agricultural Sciences</p>
+            <p>Biblical Studies</p>
+            <p>Biochemistry</p> 
+            <p>Biology</p>
+            <p>Business Law</p>
+            <p>Business Studies</p>
+            <p>Criminology</p>
+            <p>Calculus</p>
+            <p>Chemistry</p>
+            <p>Computing</p>
+            <p>Computer Science</p>
+            <p>Computer Studies</p>
+            <p>Creative Writing</p>
+            <p>Computer Literacy</p>
+            <p>Consumer Studies</p>
+            <p>Design n Technology</p>
+            <p>Drama</p>
+            <p>Economics</p>
+            <p>Engineering Graphics and Design</p>
+            <p>English Home Language</p>
+            <p>English FAL</p>
+            <p>English Literature</p>
+            <p>Essay Writing</p>
+            <p>Finance</p>
+            <p>Geography</p>
+            <p>Geometry</p>
+            <p>Graphic Design</p>
+            <p>History</p>
+            <p>Human Biology</p>
+            <p>Humanities</p>
+            <p>Journalism</p>
+            <p>Law</p>
+            <p>Legal Studies</p>
+            <p>Life Sciences</p>
+            <p>Mathematics</p>
+            <p>Mathematical Literacy</p>
+            <p>Medicine</p>
+            <p>Music</p>
+            <p>Nursing</p>
+            <p>Physical Sciences</p>
+            <p>Physiology</p>
+            <p>Religion studies</p>
+            <p>Statistics</p>
+            <p>Visual Arts</p>
+            
+        </div>
+    </div>
+
+    <div class="bg-primary text-white pt-5 pb-4">
+      <div class="container text-center text-md-left">
+    
+          <div class="row text-center text-md-left">
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h5 class="text-uppercase mb-4 font-weight-bold">About Us</h5>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, doloremque!</p>
+    
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h5 class="text-uppercase mb-4 font-weight-bold">Contact Us</h5>
+              <p>
+                <a href="#" class="text-white"><i class='bx bx-envelope'></i> tutorfinder-live</a>
+              </p>
+              <p>
+                <a href="#" class="text-white"><i class='bx bx-phone'></i> +27 66 225 1040</a>
+              </p>
+              
+            </div>
+    
+    
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h5 class="text-uppercase mb-4 font-weight-bold">Our Socials</h5>
+              <p>
+                <a href="#" class="text-white mr-3"><i class='bx bxl-meta'></i>  Facabook</a>
+              </p>
+              <p>
+                <a href="#" class="text-white"><i class='bx bxl-whatsapp mr-3'></i>  whatsapp</a>
+              </p>
+              <p>
+                <a href="#" class="text-white"><i class='bx bxl-linkedin-square mr-3'></i>  linkedin</a>
+              </p>
+          
+            </div>
+          </div>
+    
+          
+    
+        
+      </div>
+      <br class="mb-4">
+    
+        <div class="row align-items-center">
+          <div class="col-md-7 col-lg-8">
+            <p>
+              Copyright &copy 2022 All rights reserved by:
+              <a href="#" style="text-decoration: none;"><strong class="text-warning">Mytutorfinder limited coperation</strong></a>
+            </p>
+          </div>
+    
+        </div>
+    </div>
+</div>
+ 
+  
+
+{% endblock %}

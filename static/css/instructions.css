@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Dongle', sans-serif;
+ 
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+ }
+
+ :root{
+   --main-color:#0d6efd;
+}
+
+
+ .error{
+   padding: 0.5rem;
+   background: rgb(250, 69, 69);
+
+}
+ 
+ .login{
+    width: 800px;
+    padding: 50px;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background:var(--main-color) ;
+    position: absolute;
+    margin: 2rem;
+ }
+ 
+ .login h1{
+    font-size: 30px;
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+ 
+ }
+
+ @media (max-width: 720px){
+    .login{
+        width: 300px;
+        top:60%;
+        font-size: 15px;
+    }
+ }

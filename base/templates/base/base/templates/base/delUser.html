@@ -1,0 +1,23 @@
+{% extends "base/main.html" %}
+
+
+{%block content %}
+<div class="container text-dark  mt-5 ">
+    <div class="card ">
+        <div class="card-body text-center m-4">
+            <h1 class="card-title mb-4">Delete Account</h1>
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <br>
+                    <p>Are You sure you want to delet your account!This will delete all your profile and details.</p>
+                    <div class="grid gap-2">
+                        <button class="btn btn-success my-3" type="submit">Delete</button>
+                        <a class="btn btn-outline-secondary m-4 " href="{% url 'Profile' %}">Back</a>
+                    </div>
+                </form>
+
+              
+        </div>
+    </div>
+{%endblock%}

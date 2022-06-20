@@ -1,0 +1,28 @@
+{% extends "base/main.html" %}
+{% block title %}<title>Send Email</title>{% endblock %}
+{% block content %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/email_to_student.css' %}">
+{% endblock %}
+
+
+<div class="login">
+<h1>Accept Request</h1>
+  <form action="#" method="POST">
+    {% csrf_token %}
+    {% for message in messages %}
+    <p class="error">{{message}}</p>
+    {% endfor %}
+    {{send_student_email_form.as_p}}
+    <div class="d-grid gap-2">
+      <button class="btn btn-primary" type="submit">Send</button>
+      <a class="btn btn-outline-secondary " href="{% url 'Profile' %}">Back</a>
+    </div>
+    
+</form>
+</div>
+
+
+
+{% endblock %}

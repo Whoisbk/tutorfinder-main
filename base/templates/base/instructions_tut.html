@@ -1,0 +1,48 @@
+{% extends 'base/main.html' %}
+{% block title %}<title>Registration</title>{% endblock %}
+{% block content %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/instructions.css' %}">
+{% endblock %}
+
+
+<div class="login">
+    <!---Tutor Instructions-->
+        <h2 class="title">
+            Instructions to become tutor
+        </h2>
+            Simply fill out the online Registration Form.
+            <br>
+            <br>
+            3.Choose your Subject, you can choose more than one subject
+            <br>
+            <br>
+            2.Enter your Email and Personal details
+            <br>
+            <br>
+            3.Create A password
+            Keep password private 
+            <br>
+            <br>
+            4.Tutors must enter their own tutoring fee
+
+            Hourly fees are set by each tutor and depend on the tutor's qualifications and the location. Beginning tutors and college students charge around R60-R120 per hour(contact tutoring).And R160 - R250(online tutoring)
+            Certified teachers and professional tutors charge R160 or more per hour for their (contact) services and R220 or more per hour for their (online) services
+            <br> 
+            <br>
+            5.A certification is not needed to become a tutor,but having it will be very helpful.So anyone can become a tutor
+            <br>
+            <br>
+            6.
+            We suggest you make your ad interesting and emphasise your specific skills, qualifications and experience. This is your chance to let students know who you are and how you can help them with their learning. 
+            Your serveice description will be displayed on your ad for studenta to see 
+            <br>
+            6.
+            If your subject is not displayed then you can add your own subject wich will be stored in our database.
+
+            <a class="btn btn-outline-secondary m-4 " href="{% url 'signin' %}">Back</a>
+            <a class="btn btn-primary m-4 " href="{% url 'subject_choice' %}">Continue</a>
+        </div>
+
+{% endblock %}

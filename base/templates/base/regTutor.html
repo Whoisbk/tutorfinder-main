@@ -1,0 +1,119 @@
+{% extends 'base/main.html' %}
+{% block title %}<title>Registration</title>{% endblock %}
+{% block content %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/registerTutor.css' %}">
+{% endblock %}
+
+
+<div class="login">
+   
+  <h1>Sign Up</h1>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for message in messages %}
+    <p class="error">{{message}}</p>
+    {% endfor %}
+    
+    <div class="text_field">
+      {{form.fname}} 
+      <span></span>
+      <label>First Name</label> 
+    </div>
+    <div class="text_field">
+        {{form.lname}}
+        <span></span>
+        <label>Last Name</label>
+    </div>
+    <div class="text_field">
+        {{form.id_num}}
+        <span></span>
+        <label>ID Number(Enter valid 13 number ID)</label>        
+    </div>
+    <div class="text_field">
+        {{form.username}}
+        <span></span>
+        <label>Username</label>
+    </div>
+    <div class="text_field">
+        {{form.email}}
+        <span></span>
+        <label>Email</label>
+    </div>
+    <div class="text_field">
+      {{form.phone}}
+      <span></span>
+      <label>phone</label>
+  </div>
+    <div class="text_field">
+        {{form.pass1}}
+        <span></span>
+        <label>Password (More than 6 Characters)</label>        
+    </div>
+    <div class="text_field">
+        {{form.pass2}}
+        <span></span>
+        <label>Confirm Password</label>        
+    </div>
+    
+    <div class="text_field">
+        {{form.location}}
+        <span></span>
+        <label >Area</label>        
+    </div>
+    <div class="text_field">
+        {{form.tut_loc}}
+        <span></span>
+        <label >Tutoring Type</label>        
+    </div>
+    
+    <div class="text_field">
+        {{form.fee}}
+        <span></span>
+        <label>Tutoring Fee</label>        
+    </div>
+    <div class="text_field">
+        {{form.price_range}}
+        <span></span>
+        <label>Choose your price range</label>        
+    </div>
+    <div class="text_field">
+        {{form.experiance}}
+        <span></span>
+              
+    </div>
+    <div class="text_field">
+      {{form.qualification}}
+      <span></span>
+            
+  </div>
+    <div class="text_field">
+      {{form.service_desc}}
+      <span></span>
+             
+  </div>
+   <div class="text_field">
+        {{form.img_field}}
+        <span></span>
+        <label>Upload Profile Image (Optional)</label>        
+    </div>
+    <div class="text_field">
+        {{form.linkedin_link}}
+        <span></span>
+        <label>Linkedin Link (Optional)</label>        
+    </div>
+    <div class="text_field">
+        {{form.facebook_link}}
+        <span></span>
+        <label>Facebook Link (Optional)</label>        
+    </div>
+    
+    <button type="submit">Create Account</button>
+    <div class="signup_link">
+        Im already a tutor<a href="{% url 'signin' %}"> Signin</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

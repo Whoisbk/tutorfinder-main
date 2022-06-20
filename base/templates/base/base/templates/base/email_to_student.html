@@ -1,0 +1,63 @@
+{% extends "base/main.html" %}
+{% block title %}<title>Send Email</title>{% endblock %}
+{% block content %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/email_to_student.css' %}">
+{% endblock %}
+
+
+<div class="login">
+<h1>Send an email to the tutor</h1>
+  <form action="#" method="POST">
+    {% csrf_token %}
+    {{send_student_email_form.as_p}}
+    <div class="grid gap-1">
+        <button class="btn btn-success" type="submit">Send Email</button>
+        <a class="btn btn-outline-secondary m-4 " href="{% url 'Profile' %}">Back</a>
+    </div>
+    
+</form>
+</div>
+
+<!---send email Instructions--
+<div class="tutor-details">
+    <button type="button" class="close-btn" id="close-btn">
+        <i class='bx bx-x'></i>
+    </button>
+    <div class="tutor-content">
+        <h2 class="title">
+            Instructions to become tutor
+        </h2>
+        <div class="tutor-details-content">
+            
+
+            Simply fill out the online Registration Form.
+            <br>
+            <br>
+            1.Enter your Email and Personal details 
+        
+            <br>
+            <br>
+            2.Create A password
+            Keep password private
+            <br>
+            <br>
+            3.Choose your Subject<br>
+            <br>
+            4.Tutors must enter their own tutoring fee
+
+            Hourly fees are set by each tutor and depend on the tutor's qualifications, the subject and the location. Beginning tutors and college students charge around R120-R200 per hour(contact tutoring).And R160 - R250(online tutoring)
+            Certified teachers and professional tutors charge R180 or more per hour for their (contact) services and R220 or more per hour for their (online) services
+            <br>
+            <br>
+            5.
+            We suggest you make your advertisement interesting and emphasise your specific skills, qualifications and experience. This is your chance to let students know who you are and how you can help them with their learning.
+            
+
+        </div>
+    </div>
+</div>
+-->
+
+{% endblock %}

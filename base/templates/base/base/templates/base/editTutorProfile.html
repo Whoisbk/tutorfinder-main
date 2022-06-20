@@ -1,0 +1,44 @@
+{% extends "base/main.html" %}
+
+
+{%block content %}
+{% if tutor_form.is_Tutor %}
+<div class="container text-dark  mt-5 ">
+    <div class="card ">
+        <div class="card-body text-center m-4">
+            <h1 class="card-title mb-4">Edit Profile</h1>
+                <form action="#" method="POST" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <div class="grid gap-2">
+                        <button class="btn btn-success my-3" type="submit">Edit</button>
+                        <a class="btn btn-outline-secondary m-4 " href="{% url 'Profile' %}">Back</a>
+                    </div>
+                    
+                </form>
+              
+        </div>
+    </div>
+{% else %}
+<div class="container text-dark  mt-5 ">
+    <div class="card ">
+        <div class="card-body text-center m-4">
+            <h1 class="card-title mb-4">Edit Profile</h1>
+                <form action="#" method="POST" enctype="multipart/form-data" >
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <div class="grid gap-2">
+                        <button class="btn btn-primary my-3" type="submit">Edit</button>
+                        <a class="btn btn-outline-secondary m-4 " href="{% url 'Profile' %}">Back</a>
+                    </div>
+                    
+                </form>
+              
+        </div>
+    </div>
+{% endif %}
+
+{%endblock%}

@@ -1,0 +1,54 @@
+{% extends 'base/main.html' %}
+{% block title %}<title>Registration</title>{% endblock %}
+{% block content %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/instructions.css' %}">
+{% endblock %}
+
+
+<div class="login">
+    <h1 class="title">
+        Help for students
+    </h1>
+    <div class="student-details-content">
+        <br>
+        <br>
+        1.Click on request tutor
+        <br>
+        <br>
+        2.Choose the subjects your requesting form a tutor
+        <br>
+        <br>
+        3.Enter your personal details and email and the tutors email.
+    </div>
+
+    <!---Tutor Instructions-->
+        <h1 class="title">
+            Help for tutor tutor
+        </h1>
+            1.Students will send request to you via your email that you entered in your Registration,
+            <br>
+            <br>
+            2.Once you recieved requests from a student or multiple students you will need to send back a confirmation email to those students by
+            by entering their emails in the send email to student form.
+            <br>
+            <br>
+            3.Your confirmation email will also be an introduction request with your students.The introduction will be done 
+            on microsoft teams video call meeting.So you will need to create your own microsft teams meeting link.
+            <br>
+            <br>
+            4.Please make sure your email is correct because students will send requests for a tutor to the email you entered
+            <br>
+            <br>
+            6.Respoond to a student as soon as you can.So please check your email daily for request from students
+
+            5.You can update your profile at any time
+            <br>
+            <br>
+            6.You can delete your profile at any time
+            
+
+        </div>
+
+{% endblock %}

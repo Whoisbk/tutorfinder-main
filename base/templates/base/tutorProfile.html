@@ -1,0 +1,101 @@
+{% extends 'base/main.html' %}
+{% block title %}<title>{{query.user.username|title}}</title>{% endblock %}
+{% block content %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+{% endblock %}
+   
+<div class="sidebar">
+  <div class="sidebar-brand">
+    
+    <h1>Menu</h1>
+    
+  </div>
+  <div class="sidebar-menu ">
+    <div class="bx bx-x" id="exit-icon"></div>
+    <a href="{% url 'home' %}"><i class='bx bxs-user-detail'></i><span>Tutors</span></a>
+          
+    <a href="{% url 'Profile' %}"><i class='bx bx-user'></i><span>My Profile</span></a>
+
+    <a href="{% url 'help' %}"><i class='bx bx-help-circle'></i><span>Help</span></a>
+    <a href="{% url 'how_it_works' %}"><i class='bx bx-book-open'></i><span>How It works</span></a>
+    <a href="{% url 'display_subjects' %}"><i class='bx bx-book-open'></i><span>Available Subjects</span></a>
+    <a href="{% url 'signout' %}"><i class='bx bx-log-out'></i><span>Log Out</span></a>
+</div>
+</div>
+
+<div class="main-content">
+  <header>
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <h1>
+      My TuTor<span>Finder</span>
+    </h1>
+    <div class="user-wrapper">
+  
+      <div>
+        <h4><a href=" {% url 'Profile' %}">{{user.first_name|title}} {{user.last_name|title}}</a>
+        </h4>
+        {% if user.is_Student %}
+          <small>Student</small>
+        {% else %}
+        <small>Tutor</small>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+ <div class="container">
+
+    <div class="personal-info">
+      <h2>Personal <span>Information</span></h2>
+     
+      {% if query.img %}
+            <a href="{% url 'Profile' %}"><img src="{{query.img.url }}" width="150px" height="150px" alt=""></a> 
+          {% else%}
+            <a href="{% url 'Profile' %}"><img src="{% static 'images/default.png' %}" width="150px" height="150px" alt=""></a> 
+          {% endif %}
+          <p>Name:{{query.user.first_name|title}}</p>
+          <p>Last Name: {{query.user.last_name|title}} </p>
+          <p>Email: <a href="mailto: {{query.user.email}}"> {{query.user.email}}</a></p>
+          <p>Gender:{{query.gender|title}} </p> 
+          <p>Location:{{query.location|title}}</p>
+          <p>Subject:{{query.subject|title}}</p>
+          <p>Place:{{query.tutoring_location|title}}</p>
+          <p>Age:{{query.user.user_age}}</p>
+          <p>Date of Birth:{{query.user.user_dob}}</p>
+      <a href="{% url 'subject_choice_stud' %}" class="tutor-ad_profile">Request Tutor</a>
+    </div>
+
+    <div class="experiance-info">
+      <h2>Experiance</h2>
+      <p>{{query.Experiance}}</p>
+      <h3>Service Description</h3>
+      <p>{{query.serv_desc}}</p>
+      <h3>My Qualifications</h3>
+      <p>{{query.qualification}}</p>
+      
+    </div>
+</div>
+
+<div class="container">
+  <div class="contact-info">
+    <h2>Contact Details</h2>
+    <p>Phone/whatsapp: {{query.phone_num}}</p>
+  </div>
+
+  <div class="rates-info">
+    <h2>My Rates</h2>
+    <p>R{{query.fee_field}} per Hour</p>
+  </div>
+
+  <div class="rates-info">
+    <h2>My Social Media</h2>
+    <p>Facebook Link: <a href="{{query.facebook_link}}">{{query.facebook_link}}</a></p>
+    <p>Linkedin Link: <a href="{{query.linkedin_link}}">{{query.linkedin_link}}</a></p>
+  </div>
+
+</div>
+   
+</div>
+{% endblock %}

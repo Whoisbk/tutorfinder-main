@@ -1,0 +1,30 @@
+{% extends 'base/main.html' %}
+{% block title %}<title>Registration</title>{% endblock %}
+{% block content %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/instructions.css' %}">
+{% endblock %}
+
+<div class="login">
+    <h2 class="title">
+        Instructions to become a student
+    </h2>
+    <div class="student-details-content">
+        Simply fill out the online Registration Form.
+        <br>
+        <br>
+        1.Enter your Email and Personal details 
+        <br>
+        <br>
+        2.Create A password
+        Keep password private
+        <br>
+        <br>
+        3.Done!Go find your tutor
+    </div>
+    <a class="btn btn-outline-secondary m-4 " href="{% url 'signin' %}">Back</a>
+    <a class="btn btn-warning m-4 " href="{% url 'RegStud' %}">Continue</a>
+</div>
+
+{% endblock %}

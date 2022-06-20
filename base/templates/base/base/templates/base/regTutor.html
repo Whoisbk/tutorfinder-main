@@ -1,0 +1,158 @@
+{% extends 'base/main.html' %}
+{% block title %}<title>Registration</title>{% endblock %}
+{% block content %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/registerTutor.css' %}">
+{% endblock %}
+
+
+<div class="login">
+   
+  <h1>Sign Up</h1>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for message in messages %}
+    <p class="error">{{message}}</p>
+    {% endfor %}
+
+    <div class="text_field">
+      {{form.fname}} 
+      <span></span>
+      <label>First Name</label>
+    </div>
+    <div class="text_field">
+        {{form.lname}}
+        <span></span>
+        <label>Last Name</label>
+    </div>
+    <div class="text_field">
+        {{form.id_num}}
+        <span></span>
+        <label>ID Number</label>        
+    </div>
+    <div class="text_field">
+        {{form.username}}
+        <span></span>
+        <label>Username</label>
+    </div>
+    <div class="text_field">
+        {{form.email}}
+        <span></span>
+        <label>Email</label>
+    </div>
+    <div class="text_field">
+      {{form.phone}}
+      <span></span>
+      <label>phone</label>
+  </div>
+    <div class="text_field">
+        {{form.pass1}}
+        <span></span>
+        <label>Password</label>        
+    </div>
+    <div class="text_field">
+        {{form.pass2}}
+        <span></span>
+        <label>Confirm Password</label>        
+    </div>
+    
+    <div class="text_field">
+        {{form.location}}
+        <span></span>
+        <label >Province</label>        
+    </div>
+    <div class="text_field">
+        {{form.tut_loc}}
+        <span></span>
+        <label >Tutoring Type</label>        
+    </div>
+    
+    <div class="text_field">
+        {{form.fee}}
+        <span></span>
+        <label>Tutoring Fee</label>        
+    </div>
+    <div class="text_field">
+        {{form.experiance}}
+        <span></span>
+        <label>Tutoring Experiance</label>        
+    </div>
+    <div class="text_field">
+      {{form.qualification}}
+      <span></span>
+      <label>Qualifications(Optional)</label>        
+  </div>
+    <div class="text_field">
+      {{form.service_desc}}
+      <span></span>
+      <label></label>        
+  </div>
+   <div class="text_field">
+        {{form.img_field}}
+        <span></span>
+        <label>Upload Profile Image (Optional)</label>        
+    </div>
+    <div class="text_field">
+        {{form.linkedin_link}}
+        <span></span>
+        <label>Linkedin Link (Optional)</label>        
+    </div>
+    <div class="text_field">
+        {{form.facebook_link}}
+        <span></span>
+        <label>Facebook Link (Optional)</label>        
+    </div>
+    <div class="dropdown">
+        
+    </div>
+    {{form.subject}}
+    <button type="submit">Create Account</button>
+    <div class="signup_link">
+        Im already a tutor<a href="{% url 'signin' %}"> Signin</a>
+    </div>
+
+    {{form.errors}}
+  </form>
+</div>
+
+<!---Tutor Instructions-->
+<div class="tutor-details">
+    <button type="button" class="close-btn" id="close-btn">
+        <i class='bx bx-x'></i>
+    </button>
+    <div class="tutor-content">
+        <h2 class="title">
+            Instructions to become tutor
+        </h2>
+        <div class="tutor-details-content">
+            
+
+            Simply fill out the online Registration Form.
+            <br>
+            <br>
+            1.Enter your Email and Personal details 
+        
+            <br>
+            <br>
+            2.Create A password
+            Keep password private
+            <br>
+            <br>
+            3.Choose your Subject<br>
+            <br>
+            4.Tutors must enter their own tutoring fee
+
+            Hourly fees are set by each tutor and depend on the tutor's qualifications, the subject and the location. Beginning tutors and college students charge around R120-R200 per hour(contact tutoring).And R160 - R250(online tutoring)
+            Certified teachers and professional tutors charge R180 or more per hour for their (contact) services and R220 or more per hour for their (online) services
+            <br> 
+            <br>
+            5.
+            We suggest you make your advertisement interesting and emphasise your specific skills, qualifications and experience. This is your chance to let students know who you are and how you can help them with their learning.
+            
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

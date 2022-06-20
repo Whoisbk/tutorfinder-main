@@ -1,0 +1,25 @@
+{% extends "base/main.html" %}
+
+
+{%block content %}
+<div class="container text-dark  mt-5 ">
+    <div class="card ">
+        <div class="card-body text-center m-4">
+            <h1 class="card-title mb-4">Your Request has been sent succesfully</h1>
+                
+            <form action="#" method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <br>
+                    <p>Please keep a look out in your emails for the confirmation or rejection email from your tutor</p>
+                    <p>The confirmation email from the tutor will include a microsoft teams link for introduction with your tutor</p>
+                    <p>Please keep a look out in your emails for the confirmation email from your tutor</p>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-primary m-4 " href="{% url 'Profile' %}">Continue</a>
+                    </div>
+                </form>
+
+              
+        </div>
+    </div>
+{%endblock%}

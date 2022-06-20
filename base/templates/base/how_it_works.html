@@ -1,0 +1,93 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+{% block title %}<title>Select Subject</title>{% endblock %}
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/how_it_works.css' %}">
+{% block styles %}
+<link rel="stylesheet" href="">
+{% endblock %}
+<div class="sidebar">
+    <div class="sidebar-brand">
+      
+      <h1>Menu</h1>
+      
+    </div>
+    <div class="sidebar-menu ">
+      <div class="bx bx-x" id="exit-icon"></div>
+              <a href="{% url 'home' %}"><i class='bx bxs-home'></i><span>Tutors</span></a>
+          
+              <a href="{% url 'Profile' %}"><i class='bx bx-user'></i><span>My Profile</span></a>
+          
+              <a href="{% url 'help' %}"><i class='bx bx-help-circle'></i><span>Help</span></a>
+              <a href="{% url 'how_it_works' %}"><i class='bx bx-info-circle'></i><span>How It works</span></a>
+              <a href="{% url 'display_subjects' %}"><i class='bx bx-book-open'></i><span>Available Subjects</span></a>
+              <a href="{% url 'signout' %}"><i class='bx bx-log-out'></i><span>Log Out</span></a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <div class="bx bx-menu" id="menu-icon"></div>
+      <h1>
+        My TuTor<span>Finder</span>
+      </h1>
+      <div class="user-wrapper">
+          <div>
+          <h4><a href=" {% url 'Profile' %}">{{user.first_name|title}} {{user.last_name|title}}</a>
+          </h4>
+          {% if user.is_Student %}
+            <small>Student</small>
+          {% else %}
+          <small>Tutor</small>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+    
+    <div class="container">
+        <div class="intructions">
+            <h1>How to search for a tutor</h1>
+            <p>1.Search for a tutor</p>
+            <img src="{% static 'images/subject_search.png' %}" alt="" >
+        </div>
+        <div class="intructions">
+            <p>2.Search for a province</p>
+            <img src="{% static 'images/province.png' %}" alt="" >
+        </div>
+        <div class="intructions">
+            <p>3.Look for your area</p>
+            <img src="{% static 'images/narrow_area.png' %}" alt="" >
+        </div>
+        <div class="intructions">
+            <p>4.Choose your meeting place</p>
+            <img src="{% static 'images/find_tutor.png' %}" alt="" >
+        </div>
+        <div class="intructions">
+            <p>5.Narrow down your search</p>
+            <img src="{% static 'images/narrowed.png' %}" alt="" >
+        </div>
+    
+        <h1>How to Request a tutor</h1>
+        <div class="intructions">
+            <p>1.Click Request a tutor or view Profile</p>
+            <img src="{% static 'images/view_tut.png' %}" alt="" >
+        </div>
+        <div class="intructions">
+          <p>2.Select ayour subjects </p>
+          <img src="{% static 'images/select_subj.png' %}" alt="" >
+      </div>
+      <div class="intructions">
+        <p>3.Enter your details and the tutors email</p>
+        <img src="{% static 'images/tempsnip.png' %}" alt="" >
+    </div>
+    
+    
+    </div>
+    
+
+</div>
+ 
+  
+
+{% endblock %}
