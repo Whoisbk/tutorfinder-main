@@ -115,15 +115,14 @@ TUTORING_CHOICES  = (
     ("HYBRID","HYBRID"),
 )
 PRICE_RANGE = (
-    (1,"Under R50"),
-    (2,"R50 to R100"),
-    (3,"R100 to R150"),
-    (4,"R150 to R200"),
-    (5,"R200 & Above"),
+    ("Under R50","Under R50"),
+    ("R50 to R100","R50 to R100"),
+    ("R100 to R150","R100 to R150"),
+    ("R150 to R200","R150 to R200"),
+    ("R200 & Above","R200 & Above"),
 )
-
 class SigninUser(forms.Form):
-    username = forms.CharField(required=False,max_length=200,label="",widget=forms.TextInput(
+    username = forms.EmailField(required=False,max_length=200,label="",widget=forms.EmailInput(
         attrs={'class':'email-input',
         'title':'name',
         }))
@@ -135,7 +134,7 @@ class CreateTutor(forms.Form):
     username = forms.CharField(required=False,max_length=200,label="",widget=forms.TextInput(
         attrs={'class':'username-input',
         }))
-    id_num = forms.CharField(widget=forms.TextInput(
+    id_num = forms.CharField(widget=forms.NumberInput(
         attrs={'class':'username-input',
         }))
     fname = forms.CharField(required=False,max_length=200,label="",widget=forms.TextInput(
@@ -147,7 +146,9 @@ class CreateTutor(forms.Form):
     phone = forms.CharField(required=False,max_length=200,label="",widget=forms.TextInput(
         attrs={'class':'phone-input',
         }))
-    email = forms.EmailField(max_length=200)
+    email = forms.EmailField(max_length=200,widget=forms.EmailInput(
+        attrs={'class':'phone-input',
+        }))
     pass1 = forms.CharField(required=True,max_length=32,label="",widget=forms.PasswordInput(
         attrs={'class':'pass-input',
        }))

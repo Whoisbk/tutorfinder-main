@@ -29,14 +29,14 @@
       <div class="forPass">
         Forgot Password? <a href="{% url 'reset_password' %}">Reset Password</a>
       </div>
-      <button type="submit"><a href="{% url 'signin' %}">Login</a></button>
+      <button type="submit"><a type="submit" href="{% url 'signin' %}">Login</a></button>
       <div class="signup_link">
           Not a Student Yet? <a href="{% url 'instructions_stud' %}">Register Here</a>
       </div>
       <div class="signup_link">
         Not a Tutor Yet? <a href="{% url 'instructions_tut' %}">Register Here</a>
     </div>
-     
+     {{form.error}}
   </form>
   
 </div>

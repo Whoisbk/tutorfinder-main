@@ -65,11 +65,11 @@ LEVEL_CHOICES  = (
     ("Tetiary","Tetiary"),
 )
 PRICE_RANGE = (
-    (1,"Under R50"),
-    (2,"R50 to R100"),
-    (3,"R100 to R150"),
-    (4,"R150 to R200"),
-    (5,"R200 & Above"),
+    ("Under R50","Under R50"),
+    ("R50 to R100","R50 to R100"),
+    ("R100 to R150","R100 to R150"),
+    ("R150 to R200","R150 to R200"),
+    ("R200 & Above","R200 & Above"),
 )
 
 SUBJECT_CHOICES = (
@@ -144,7 +144,7 @@ class Tutors(models.Model):
     user = models.OneToOneField(User,on_delete = models.CASCADE,primary_key = True)
     phone_num = PhoneField(blank= True)
     location = models.CharField(max_length = 50,choices= PROVINCE_CHOICES,default = "GAUTENG")
-    img = models.ImageField(default = "default.png",null = True,blank = True)
+    img = models.ImageField(default = "default.png",null = True,blank = True) 
     qualification = models.CharField(max_length=500,default="Under Contruction" )
     subject = MultiSelectField(choices = SUBJECT_CHOICES,default= "Other")
     date_created = models.DateTimeField(default = timezone.now)

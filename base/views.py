@@ -49,6 +49,9 @@ def signin(request):
                 if email == "":
                     messages.error(request,'Email is empty')
                     return redirect("signin")
+                elif not User.objects.filter(email=email):
+                    messages.error(request,'Email is not registered')
+                    return redirect("signin")
                 user = User.objects.get(email=email).username
                 u = authenticate(username=user,password=pass1)
             except  Exception as e:
@@ -209,10 +212,11 @@ def RegTut(request):
             
             if subj == []:
                 final_subj = subj_2
-            else:
+            else: 
                 final_subj = subj
 
             print(final_subj)
+            
             idnum = "".join(str(id_num))
 
             za_id = SouthAfricanIdentityValidate(idnum)
@@ -284,7 +288,7 @@ def RegTut(request):
                     subject=final_subj,fee_field=fee,Experiance= exp,gender=za_gender,tutoring_location = tut_loc,
                     serv_desc=service_desc,facebook_link=facebook_link,instagram_link=instagram_link,linkedin_link=linkedin_link,level=level,price_range=price_range).save()
                     
-                    return redirect("signin")
+                    
 
                     messages.success(request," You are now a Tutor")
                     template = render_to_string('base/email_tutor.html',{'name':u.first_name})
@@ -296,7 +300,7 @@ def RegTut(request):
                         [e], 
                         fail_silently=False,
                         )
-                    
+                    return redirect("signin")
             except Exception as e:
                 print(e)
     else:
@@ -790,7 +794,7 @@ def email_to_student(request):
             if to_email12 != "":
                 email_list.append(to_email12)
             if to_email13 != "":
-                email_list.append(to_emai13)
+                email_list.append(to_emai113)
             if to_email14 != "":
                 email_list.append(to_email14)
             if to_email14 != "":
