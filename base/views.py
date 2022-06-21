@@ -52,6 +52,9 @@ def signin(request):
                 elif not User.objects.filter(email=email):
                     messages.error(request,'Email is not registered')
                     return redirect("signin")
+                elif pass1 == "":
+                    messages.error(request,'Please enter password')
+                    return redirect("signin")
                 user = User.objects.get(email=email).username
                 u = authenticate(username=user,password=pass1)
             except  Exception as e:
