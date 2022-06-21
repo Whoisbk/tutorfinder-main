@@ -236,7 +236,7 @@ def RegTut(request):
             try:
                 special_Sym = ["@","!","$","#"]
                 if p1 != p2:#if passwords are not equal
-                    messages.error(request,"Password are not equal")
+                    messages.error(request,"Passwords are not equal")
                     form = CreateTutor(request.POST,request.FILES)
                 elif fname=="":
                     messages.error(request,"Enter your name")
@@ -344,7 +344,7 @@ def RegStud(request):
             try:
                 special_Sym = ["@","!","$","#"]
                 if p1 != p2:#if passwords are not equal
-                    messages.error(request,"Password are not equal")
+                    messages.error(request,"Passwords are not equal")
                     formStud = CreateStud(request.POST,request.FILES)
                 elif fname=="":
                     messages.error(request,"Enter your name")
@@ -723,7 +723,7 @@ def send_email(request):
                     'Request for tutoring session',
                     subjects +"\n \n"+ focus,
                     from_email,
-                    [to_email], 
+                    [to_email,from_email], 
                     fail_silently=False,
                 )
                 return redirect("success")
@@ -793,14 +793,14 @@ def email_to_student(request):
             if to_email10 != "":
                 email_list.append(to_email10)
             if to_email11 != "":
-                email_list.append(to_emai11)    
+                email_list.append(to_email11)    
             if to_email12 != "":
                 email_list.append(to_email12)
             if to_email13 != "":
                 email_list.append(to_emai113)
             if to_email14 != "":
                 email_list.append(to_email14)
-            if to_email14 != "":
+            if to_email15 != "":
                 email_list.append(to_email15)
 
             if fname == "":
@@ -823,6 +823,51 @@ def email_to_student(request):
                 Send_Student_Email(request.POST)
             elif not User.objects.filter(email=from_email):#if email already exists
                 messages.error(request,"Tutor email does not exist")
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email1):#if email already exists
+                messages.error(request,f'{to_email1} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email2):#if email already exists
+                messages.error(request,f'{to_email2} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email3):#if email already exists
+                messages.error(request,f'{to_email3} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email4):#if email already exists
+                messages.error(request,f'{to_email4} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email5):#if email already exists
+                messages.error(request,f'{to_email5} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email6):#if email already exists
+                messages.error(request,f'{to_email6} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email7):#if email already exists
+                messages.error(request,f'{to_email7} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email8):#if email already exists
+                messages.error(request,f'{to_email8} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email9):#if email already exists
+                messages.error(request,f'{to_email9} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email10):#if email already exists
+                messages.error(request,f'{to_email10} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email11):#if email already exists
+                messages.error(request,f'{to_email11} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email12):#if email already exists
+                messages.error(request,f'{to_email12} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email13):#if email already exists
+                messages.error(request,f'{to_email13} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email14):#if email already exists
+                messages.error(request,f'{to_email14} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email15):#if email already exists
+                messages.error(request,f'{to_email15} email does not exist')
                 Send_Email(request.POST)
             else:
                 print(email_list)
@@ -904,7 +949,7 @@ def reject_request(request):
                 email_list.append(to_emai13)
             if to_email14 != "":
                 email_list.append(to_email14)
-            if to_email14 != "":
+            if to_email15 != "":
                 email_list.append(to_email15)
 
             if fname == "":
@@ -916,6 +961,51 @@ def reject_request(request):
             elif not User.objects.filter(email=from_email):
                 messages.error(request,"Tutor email does not exist")
                 Reject_Email(request.POST)
+            elif not User.objects.filter(email=to_email1):#if email already exists
+                messages.error(request,f'{to_email11} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email2):#if email already exists
+                messages.error(request,f'{to_email12} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email3):#if email already exists
+                messages.error(request,f'{to_email3} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email4):#if email already exists
+                messages.error(request,f'{to_email4} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email5):#if email already exists
+                messages.error(request,f'{to_email5} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email6):#if email already exists
+                messages.error(request,f'{to_email6} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email7):#if email already exists
+                messages.error(request,f'{to_email7} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email8):#if email already exists
+                messages.error(request,f'{to_email8} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email9):#if email already exists
+                messages.error(request,f'{to_email9} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email10):#if email already exists
+                messages.error(request,f'{to_email10} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email11):#if email already exists
+                messages.error(request,f'{to_email11} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email12):#if email already exists
+                messages.error(request,f'{to_email12} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email13):#if email already exists
+                messages.error(request,f'{to_email13} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email14):#if email already exists
+                messages.error(request,f'{to_email14} email does not exist')
+                Send_Email(request.POST)
+            elif not User.objects.filter(email=to_email15):#if email already exists
+                messages.error(request,f'{to_email15} email does not exist')
+                Send_Email(request.POST)
             else:
                 print(email_list)
                 subjects = f'Hello my name is {fname} {lname}\n \n We would like to inform you that your Request for a tutor has been regected by the tutor.\n'

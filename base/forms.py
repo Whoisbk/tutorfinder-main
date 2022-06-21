@@ -309,7 +309,7 @@ class CreateStud(forms.Form):
     username = forms.CharField(required=False,max_length=200,label="",widget=forms.TextInput(
         attrs={'class':'username-input',
         }))
-    id_num = forms.CharField(widget=forms.TextInput(
+    id_num = forms.CharField(widget=forms.NumberInput(
         attrs={'class':'username-input',
         }))
     fname = forms.CharField(required=False,max_length=200,label="",widget=forms.TextInput(
@@ -321,8 +321,8 @@ class CreateStud(forms.Form):
     phone = forms.CharField(required=False,max_length=200,label="",widget=forms.TextInput(
         attrs={'class':'phone-input',
         }))
-    email = forms.EmailField(required=False,max_length=200,label="",widget=forms.TextInput(
-        attrs={'class':'email-input',
+    email = forms.EmailField(max_length=200,widget=forms.EmailInput(
+        attrs={'class':'phone-input',
         }))
     pass1 = forms.CharField(required=True,max_length=32,label="",widget=forms.PasswordInput(
         attrs={'class':'pass-input',
@@ -355,9 +355,10 @@ class EditUser(forms.Form):
         attrs={'size':'50',
         'placeholder':'Last Name'}))
     
-    email = forms.EmailField(required=False,max_length=200,label="",widget=forms.TextInput(
+    email = forms.EmailField(required=False,max_length=200,label="",widget=forms.EmailInput(
         attrs={'size':'50',
         'placeholder':'Email'}))
+        
     phone = forms.CharField(required=False,max_length=200,label="",widget=forms.TextInput(
         attrs={'size':'50',
         'placeholder':'Phone Number'}))

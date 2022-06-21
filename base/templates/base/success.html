@@ -11,12 +11,18 @@
                     {% csrf_token %}
                     {{form.as_p}}
                     <br>
-                    <p>Please keep a look out in your emails for the confirmation or rejection email from your tutor</p>
+                    {% if user.is_Tutor %}
+                    <p>Your Confirmation email has been sent successfully to the student</p>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-primary m-4 " href="{% url 'Profile' %}">Continue</a>
+                    </div>
+                    {% else %}
                     <p>The confirmation email from the tutor will include a microsoft teams link for introduction with your tutor</p>
                     <p>Please keep a look out in your emails for the confirmation email from your tutor</p>
                     <div class="d-grid gap-2">
                         <a class="btn btn-primary m-4 " href="{% url 'Profile' %}">Continue</a>
                     </div>
+                    {% endif %}
                 </form>
 
               
