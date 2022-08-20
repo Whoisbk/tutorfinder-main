@@ -50,7 +50,7 @@ def signin(request):
                     messages.error(request,'Email is empty')
                     return redirect("signin")
                 elif not User.objects.filter(email=email):
-                    messages.error(request,'Email is not registered')
+                    messages.error(request,'Create an Account')
                     return redirect("signin")
                 elif pass1 == "":
                     messages.error(request,'Please enter password')

@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-t+k!#q=1q!yal4-g4ez28(l4i+it!9hxg*4&ki&1_!k9d)#7!o'
-
+ 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['tutorfinder-live.herokuapp.com','127.0.0.1']
 
@@ -157,12 +157,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'mytutorfinderltdco@gmail.com'
 EMAIL_HOST_PASSWORD = 'fzkabpxyvdosahjo'
-
+"""
 #AWS Settings
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID =  config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 AWS_QUERYSTRING_AUTH = False
-
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+"""
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
