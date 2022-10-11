@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate,login,logout
 from .forms import SigninUser,CreateTutor,CreateStud,EditUser,DeleteUser,editTutor,UserCreationForm,Send_Email,Send_Student_Email,SubjectForm,Reject_Email
-from .models import Tutors,Students,User
+from .models import Tutors,Students,User 
 from django.contrib import messages
 from .filters import TutorFilter 
 from django.contrib import messages

@@ -146,7 +146,7 @@ class Tutors(models.Model):
     location = models.CharField(max_length = 50,choices= PROVINCE_CHOICES,default = "GAUTENG")
     img = models.ImageField(default = "default.png",null = True,blank = True) 
     qualification = models.CharField(max_length=500,default="Under Contruction" )
-    subject = MultiSelectField(choices = SUBJECT_CHOICES,default= "Other")
+    subject = models.CharField(max_length = 600,choices=SUBJECT_CHOICES, default="Other")
     date_created = models.DateTimeField(default = timezone.now)
     fee_field = models.DecimalField(max_digits=5,decimal_places = 2,default=0)
     Experiance = models.CharField(max_length = 1200,default="Under Contruction")#add default exp 
