@@ -1,1 +1,1 @@
-web: gunicorn newdemo.wsgi --log-file - 
+web: gunicorn newdemo.wsgi 
