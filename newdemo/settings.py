@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path,os
 from decouple import config
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t+k!#q=1q!yal4-g4ez28(l4i+it!9hxg*4&ki&1_!k9d)#7!o'
  
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['tutorfinder-live.herokuapp.com','127.0.0.1']
 
@@ -160,7 +161,7 @@ EMAIL_HOST_PASSWORD = 'fzkabpxyvdosahjo'
 
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #LINODE Settings
 LINODE_BUCKET = config('LINODE_BUCKET')
@@ -170,6 +171,7 @@ LINODE_BUCKET_SECRET_KEY = config('LINODE_BUCKET_SECRET_KEY')
 
 
 #AWS Settings
+AWS_DEFAULT_ACL = 'authenticated-read'
 AWS_S3_ENDPOINT_URL = f'https://{LINODE_BUCKET_REGION}.linodeobjects.com' 
 AWS_ACCESS_KEY_ID = LINODE_BUCKET_ACCESS_KEY
 AWS_SECRET_ACCESS_KEY = LINODE_BUCKET_SECRET_KEY
